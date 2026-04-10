@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
 <head>
     <title>테스트</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
 </head>
 <body>
-<div class="container my-3">
+<div layout:fragment="content" class="container my-3">
     <table class="table">
         <thead class="table-dark">
             <tr>
@@ -24,6 +23,7 @@
             </tr>
         </tbody>
     </table>
+    <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
 </div>
 </body>
 </html>
