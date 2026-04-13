@@ -12,6 +12,7 @@ import com.example.sbb.answer.Answer;
 import com.example.sbb.answer.AnswerRepository;
 import com.example.sbb.question.Question;
 import com.example.sbb.question.QuestionRepository;
+import com.example.sbb.question.QuestionService;
 
 //import com.example.sbb.QuestionRepository;
 
@@ -28,6 +29,9 @@ class DemoApplicationTests {
 
     @Autowired
     private QuestionRepository questionRepository;
+    
+    @Autowired
+    private QuestionService questionservice;
 
     @Test
     void testJpa() {        
@@ -61,11 +65,19 @@ class DemoApplicationTests {
 		 * Question q = this.questionRepository.findBySubjectAndContent("demo가 무엇인가요?",
 		 * "demo에 대해서 알고 싶습니다."); assertEquals(1, q.getId());
 		 */
-    	Optional<Question> oq=this.questionRepository.findById(1);
-    	assertTrue(oq.isPresent());
-    	Question q=oq.get();
-    	q.setSubject("수정");
-    	this.questionRepository.save(q);
+		
+		/*
+		 * Optional<Question> oq=this.questionRepository.findById(1);
+		 * assertTrue(oq.isPresent()); Question q=oq.get(); q.setSubject("수정");
+		 * this.questionRepository.save(q);
+		 */
 		 
+		 
+        for(int i = 1; i <= 300; i++) {
+            String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용없음";
+            this.questionservice.create(subject, content);
+        }
+    	
     }
 }
