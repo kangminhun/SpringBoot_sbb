@@ -13,6 +13,8 @@ import com.example.sbb.answer.AnswerRepository;
 import com.example.sbb.question.Question;
 import com.example.sbb.question.QuestionRepository;
 import com.example.sbb.question.QuestionService;
+import com.example.sbb.user.SiteUser;
+import com.example.sbb.user.UserService;
 
 //import com.example.sbb.QuestionRepository;
 
@@ -32,6 +34,9 @@ class DemoApplicationTests {
     
     @Autowired
     private QuestionService questionservice;
+    
+    @Autowired
+    private UserService userService;
 
     @Test
     void testJpa() {        
@@ -80,6 +85,9 @@ class DemoApplicationTests {
 		 * this.questionservice.create(subject, content, null); }
 		 */
 		 
+    	UserService us=this.userService;
+    	us.create("민훈", "alsgns1295@gmail.com", "1234");
+    	
     	
     }
 }
